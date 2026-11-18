@@ -4,6 +4,17 @@ let matched = 0;
 let cardOne, cardTwo;
 let disableDeck = false;
 
+let counter = 0;
+
+counterObj = document.getElementById("counter")
+
+updateCounter();
+
+function updateCounter()
+{
+    counterObj.innerText = counter
+}
+
 function flipCard({target: clickedCard}) {
     if(cardOne !== clickedCard && !disableDeck) {
         clickedCard.classList.add("flip");
@@ -19,6 +30,8 @@ function flipCard({target: clickedCard}) {
 }
 
 function matchCards(img1, img2) {
+    counter++
+    updateCounter();
     if(img1 === img2) {
         matched++;
         if(matched == 8) {
@@ -46,6 +59,8 @@ function matchCards(img1, img2) {
 
 function shuffleCard() {
     matched = 0;
+    counter = 0;
+    updateCounter();
     disableDeck = false;
     cardOne = cardTwo = "";
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];

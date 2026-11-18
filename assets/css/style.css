@@ -10,12 +10,41 @@ body{
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #6563FF;
+  background-size: 64px 64px;
+  background-image: repeating-conic-gradient(
+    from 45deg,
+    #6563FF 0% 25%,
+    #6952cf 0% 50%
+  );
+  animation: scroll45 1s linear infinite;
 }
+
+@keyframes scroll45
+{
+  0% {background-position: 0 0;}
+  100% {background-position: 64px 64px;}
+}
+
+#anchor {
+  anchor-name: --a1;
+}
+
+#counter{
+  position: absolute;
+  position-anchor: --a1;
+  position-area: top center;
+  font-size: larger;
+  margin: 20%;
+  padding: 25px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
 .wrapper{
   padding: 25px;
   border-radius: 10px;
-  background: #F8F8F8;
+  background-image: url("../img/img-10.png");
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 .cards, .card, .view{
@@ -64,20 +93,29 @@ body{
   height: 100%;
   position: absolute;
   border-radius: 7px;
-  background: #fff;
+  border: 1dvh solid #fff;
   pointer-events: none;
   backface-visibility: hidden;
   box-shadow: 0 3px 10px rgba(0,0,0,0.1);
   transition: transform 0.25s linear;
 }
 .card .front-view img{
-  width: 19px;
+  width: 64px;
+  background: #fff;
 }
 .card .back-view img{
-  max-width: 45px;
+  max-width: 64px;
 }
 .card .back-view{
   transform: rotateY(-180deg);
+  background: #fff;
+}
+.card .front-view{
+  background-image: repeating-conic-gradient(
+    #0010f0 0% 25%,
+    #f01000 0% 50%
+  );
+  background-size: 20px 20px;
 }
 .card.flip .back-view{
   transform: rotateY(0);
